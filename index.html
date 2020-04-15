@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8"/>
+  <meta name=viewport content="width=device-width, minimum-scale=1.0, maximum-scale=1.0"/>
+  <meta name=description content="Don't ask Kate!"/>
+  <title>What is the theme today?</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <style>
+    html{font:normal normal 105%/1.7 sans-serif}
+    .container{max-width:1120px;margin:0 auto;padding:0 30px;padding:0 1.5rem}
+    .grid{margin-left:-3%;max-width:105%}
+    .unit{display:inline-block;*display:inline;*zoom:1;vertical-align:top;margin-left:3%;margin-right:-.25em;overflow:hidden;*overflow:visible}
+    .span-grid{width:97%}
+    h1{font-family: sans-serif;font-style: normal;font-weight: 700;line-height:1.0;letter-spacing:-0.05555556em;font-size:60px;font-size:3.4em;font-shadow:none;color:#212121;}
+    h2,.beta{font-family:sans-serif;font-size:40px;font-size:1.7rem;font-weight:500;color:#424242;line-height:1.5;letter-spacing:-0.05555556em}
+    h2.subtitle {color: #696969;}
+    h2.today{color: #4db6ac;}
+    h2.today:before{content: "👉";margin-right: 3px;}
+    #dates{margin-top: 4rem;}
+    p,ul,hr,form,h1,.alpha,h2,.beta{margin-bottom:30px;margin-bottom:1.5rem}
+    .past {text-decoration: line-through;}
+    img{height:auto;}
+    .head{height:150px;}
+    .intro {float:right;margin:1.0em;max-width:60%;}
+    @media screen and (max-width:650px){
+      img{height:auto;color:#c00}
+      .grid{margin-left:0;max-width:none}
+      .unit{width:auto;margin-left:0;display:block}
+      h1{font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+        font-style: normal;
+        font-weight: 600;line-height:1.0;letter-spacing:-0.05555556em;font-size:50px;font-size:2.0rem;font-shadow:none;color:#333
+      }
+      html{font-size:90%:line-height:normal}
+      #menu{display:none;}
+      img{height:auto;border:0;}
+      .intro {display: block;margin-left:auto;margin-right:auto;}
+      }
+    </style>
+  </head>
+  <body id=top>
+    <div class="container">
+      <div class="grid">
+        <div class="unit span-grid">
+          <div class="unit span-grid">
+            <h1>Wondering what today's theme is?</h1>
+            <h2 class="subtitle">Don't ask Kate, just check here</h2>
+            <div id="dates">
+              <h2 data-date="2020-04-16">April 23 St Georges Day - Bring and Drink From Your Favorite Tea Cup</h2>
+              <h2 data-date="2020-04-16">April 22 Quote Day - Share The Quote That You Are Most Drawn To</h2>
+              <h2 data-date="2020-04-16">April 21 Sunglasses Day - Wear Your Favorite Shades</h2>
+              <h2 data-date="2020-04-16">April 20 Baby Picture Day</h2>
+              <h2 data-date="2020-04-16">April 17 Dress in a Superhero Outfit</h2>
+              <h2 data-date="2020-04-16">April 16 Crazy Hair Day</h2>
+              <h2 data-date="2020-04-15">April 15 Display Your Favorite Board Game</h2>
+              <h2 data-date="2020-04-14">April 14 Streaming Recommendations Day</h2>
+              <h2 data-date="2020-04-13">April 13 Dunno - couldn't find in my notes</h2>
+              <h2 data-date="2020-04-10">April 10 Dunno - couldn't find in my notes</h2>
+              <h2 data-date="2020-04-09">April 9 Dunno - couldn't find in my notes</h2>
+              <h2 data-date="2020-04-08">April 8 Dunno - couldn't find in my notes</h2>
+              <h2 data-date="2020-04-07">April 7 Talent Show</h2>
+              <h2 data-date="2020-04-06">April 6 Show and Tell</h2>
+              <h2 data-date="2020-04-03">April 3 Disguise Yourself</h2>
+              <h2 data-date="2020-04-02">April 2 Pajama Day!</h2>
+              <h2 data-date="2020-04-01">April 1 Represent Your Favorite Team</h2>
+              <h2 data-date="2020-03-31">March 31 Display Your Favorite Book</h2>
+              <h2 data-date="2020-03-30">March 30 Create a Cool Scene Behind You</h2>
+              <h2 data-date="2020-03-27">March 27 Wear Your Favorite Hat</h2>
+              <h2 data-date="2020-03-26">March 26 Drink From Your Favorite Mug</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      const now = new Date();
+      const nowISO = now.toISOString().split("T")[0];
+      const elems = document.getElementById("dates").querySelectorAll("h2");
+      elems.forEach((item) => {
+        const dateString = item.dataset.date;
+        const date = new Date(dateString);
+        const dateISO = date.toISOString().split("T")[0];
+        if (nowISO == dateISO) {
+          item.classList.add("today");
+        }
+        if (nowISO > dateISO) {
+          item.classList.add("past");
+        }
+      });
+    </script>
+  </body>
+</html>
